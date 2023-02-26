@@ -1,0 +1,124 @@
+{
+    "city": [
+        {
+            "name": "Blagoevgrad",
+            "cordinates": [42.0137818,23.0772321]
+        },
+        {
+            "name": "Lovech",
+            "cordinates": [43.1444688,24.6760253]
+        },
+        {
+            "name": "Dobrich",
+            "cordinates": [43.5752701,27.7769009]
+        },
+        {
+            "name": "Sliven",
+            "cordinates": [42.665375,26.2900436]
+        },
+        {
+            "name": "Kardzhali",
+            "cordinates": [41.6287707,25.3651893]
+        },
+        {
+            "name": "Varna",
+            "cordinates": [43.2048197,27.8728692]
+        },
+        {
+            "name": "Gabrovo",
+            "cordinates": [42.8489128,25.2552368]
+        },
+        {
+            "name": "Burgas",
+            "cordinates": [42.5265006,27.3819265]
+        },
+        {
+            "name": "Pazardzhik",
+            "cordinates": [42.1887605,24.3128313]
+        },
+        {
+            "name": "Vidin",
+            "cordinates": [43.9796191,22.8423548]
+        },
+        {
+            "name": "Smolyan",
+            "cordinates": [41.5790805,24.7061357]
+        },
+        {
+            "name": "Targovishte",
+            "cordinates": [43.2565835,26.5458731]
+        },
+        {
+            "name": "Veliko Tarnovo",
+            "cordinates": [43.0840714,25.6156129]
+        },
+        {
+            "name": "Silistra",
+            "cordinates": [44.1112113,27.2460018]
+        },
+        {
+            "name": "Stara Zagora",
+            "cordinates": [42.4192538,25.6073522]
+        },
+        {
+            "name": "Haskovo",
+            "cordinates": [41.9327755,25.5311489]
+        },
+        {
+            "name": "Shumen",
+            "cordinates": [43.2697463,26.9389116]
+        },
+        {
+            "name": "Yambol",
+            "cordinates": [42.477134,26.4670716]
+        },
+        {
+            "name": "Sofia",
+            "cordinates": [42.6954108,23.2539073]
+        },
+        {
+            "name": "Vratsa",
+            "cordinates": [43.2073834,23.5318044]
+        },
+        {
+            "name": "Plovdiv",
+            "cordinates": [42.1440985,24.6691165]
+        },
+        {
+            "name": "Pernik",
+            "cordinates": [42.5962873,23.0164283]
+        },
+        {
+            "name": "Pleven",
+            "cordinates": [43.4211762,24.5970236]
+        },
+        {
+            "name": "Montana",
+            "cordinates": [43.414197,23.1923835]
+        },
+        {
+            "name": "Kyustendil",
+            "cordinates": [42.2867049,22.6758861]
+        },
+        {
+            "name": "Ruse",
+            "cordinates": [43.8215957,25.8897527]
+        },
+        {
+            "name": "Razgrad",
+            "cordinates": [43.5296945,26.4932642]
+        }
+    ],
+    "winter": [
+        {
+            "name": "Borovets",
+            "cordinates": [42.2675304,23.5996444]
+        }
+    ],
+    "summer": [
+        {
+            "name": "Primorsko",
+            "cordinates": [42.2679614,27.7506113]
+        }
+    ]
+}
