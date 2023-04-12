@@ -1,3 +1,11 @@
 {
-  "title": "Welcome to react using react-i18next"
+  "wind": "WIND",
+  "humidity": "HUMIDITY",
+  "visibility": "VISIBILITY",
+  "feels-like": "FEELS LIKE",
+  "pressure": "PRESSURE",
+  "sunrise": "SUNRISE",
+  "sunset": "SUNSET",
+
+  "Rousse": "Ruse"
 }

@@ -51,13 +51,12 @@ const CurrentWeather = ({ selected }) => {
             <div>
                 <div className="flex mb-16">
                     <div className="w-4/6">
-                        <h1 className="text-2xl font-bold">{data.name}</h1>
+                        <h1 className="text-2xl font-bold">{t(`${data.name}`)}</h1>
                         <p className="mb-8">08:20 11/12/2022</p>
                         <h1 className="text-4xl font-bold">{Math.round(data.main.temp)}<span>&deg;</span></h1>
                     </div>
                     <div className="w-2/6 flex justify-center items-end">
                         {getWeatherIcon(data.weather[0].main)}
-                        <h1>{t('title')}</h1>
                     </div>
                 </div>
                 <div className="flex space-x-6 mb-4">
@@ -85,7 +84,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <TbWindsock className="text-xl" />
-                                <span className="ml-2 text-xs">WIND</span>
+                                <span className="ml-2 text-xs">{t('wind')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{getWindDirectionCardinal(data.wind.deg)}</p>
                         </div>
@@ -94,7 +93,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <TbWind className="text-xl" />
-                                <span className="ml-2 text-xs">WIND</span>
+                                <span className="ml-2 text-xs">{t('wind')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{data.wind.speed} m/s</p>
                         </div>
@@ -105,7 +104,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <IoWater className="text-xl" />
-                                <span className="ml-2 text-xs">HUMIDITY</span>
+                                <span className="ml-2 text-xs">{t('humidity')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{data.main.humidity} %</p>
                         </div>
@@ -114,7 +113,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <AiFillEye className="text-xl" />
-                                <span className="ml-2 text-xs">VISIBILITY</span>
+                                <span className="ml-2 text-xs">{t('visibility')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{data.visibility / 1000} km</p>
                         </div>
@@ -125,7 +124,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <TbTemperature className="text-xl" />
-                                <span className="ml-2 text-xs">FEELSLIKE</span>
+                                <span className="ml-2 text-xs">{t('feels-like')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{Math.round(data.main.feels_like)}<span>&deg;</span></p>
                         </div>
@@ -134,7 +133,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <AiOutlineDashboard className="text-xl" />
-                                <span className="ml-2 text-xs">PRESSURE</span>
+                                <span className="ml-2 text-xs">{t('pressure')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{data.main.pressure} Pha</p>
                         </div>
@@ -145,7 +144,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <WiSunrise className="text-xl" />
-                                <span className="ml-2 text-xs">SUNRISE</span>
+                                <span className="ml-2 text-xs">{t('sunrise')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{moment.unix(data.sys.sunrise).format('HH:mm')}</p>
                         </div>
@@ -154,7 +153,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <WiSunset className="text-xl" />
-                                <span className="ml-2 text-xs">SUNSET</span>
+                                <span className="ml-2 text-xs">{t('sunset')}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{moment.unix(data.sys.sunset).format('HH:mm')}</p>
                         </div>
