@@ -7,6 +7,16 @@
   "sunrise": "ИЗГРЕВ",
   "sunset": "ЗАЛЕЗ",
 
+  "clear sky": "Ясно небе",
+  "few clouds": "Малко облаци",
+  "scattered clouds": "Разкъсана облачност",
+  "broken clouds": "Разкъсани облаци",
+  "shower rain": "Дъжд",
+  "rain": "Дъжд",
+  "thunderstorm": "Гръмотевична буря",
+  "snow": "сняг",
+  "mist": "Мъгла",
+
   "Vidin": "Видин",
   "Montana": "Монтана",
   "Vratsa": "Враца",

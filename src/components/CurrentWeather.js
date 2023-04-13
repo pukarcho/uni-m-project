@@ -53,7 +53,10 @@ const CurrentWeather = ({ selected }) => {
                     <div className="w-4/6">
                         <h1 className="text-2xl font-bold">{t(`${data.name}`)}</h1>
                         <p className="mb-8">08:20 11/12/2022</p>
-                        <h1 className="text-4xl font-bold">{Math.round(data.main.temp)}<span>&deg;</span></h1>
+                        <div className="flex justify-start items-end space-x-2">
+                            <h1 className="text-4xl font-bold">{Math.round(data.main.temp)}<span>&deg;</span></h1>
+                            <span>{t(`${data.weather[0].description}`)}</span>
+                        </div>
                     </div>
                     <div className="w-2/6 flex justify-center items-end">
                         {getWeatherIcon(data.weather[0].main)}

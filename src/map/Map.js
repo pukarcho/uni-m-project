@@ -15,7 +15,9 @@ function Map({ mapView, onMarkerClick }) {
     const markers = require('./markers.json');
 
     const iconMarkup = renderToStaticMarkup(
-        <HiMapPin className='relative w-8 h-8 bottom-5 right-3 text-red-700' />
+        <div className='flex justify-center items-center w-14 h-14 rounded-full relative bottom-10 right-4' style={{ background: "radial-gradient(circle, rgba(47, 255, 1, 0.8), rgba(0, 0, 0, 0))" }}>
+            <HiMapPin className='w-8 h-8 bottom-1 text-red-700' />
+        </div>
     );
 
     const customMarkerIcon = divIcon({
@@ -40,7 +42,7 @@ function Map({ mapView, onMarkerClick }) {
     }, []);
 
     return (
-        <MapContainer center={[42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={false} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
+        <MapContainer center={[42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
