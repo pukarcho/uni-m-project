@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import Map from '../map/Map';
 import ViewChange from './ViewChange';
 import Drawer from './Drawer';
+import Notification from './Notification';
 
 const user = {
     name: 'Tom Cook',
@@ -34,6 +35,10 @@ function Layout() {
         open: false,
         data: {}
     });
+    const [openNotification, setOpenNotification] = useState({
+        open: false,
+        data: {}
+    });
 
     const handleViewChange = (type) => {
         setMapView(type);
@@ -46,6 +51,16 @@ function Layout() {
     const onMarkerClick = (city) => {
         setOpenDrawer({
             open: true,
+            data: {
+                city: city
+            }
+        });
+    };
+
+    const onMarkerHover = (show, city) => {
+        console.log(show);
+        setOpenNotification({
+            open: show,
             data: {
                 city: city
             }
@@ -200,9 +215,10 @@ function Layout() {
                 </Disclosure>
 
                 <main>
-                    <Map mapView={mapView} onMarkerClick={onMarkerClick} />
-                    <ViewChange handleViewChange={handleViewChange} />
+                    <Map mapView={mapView} onMarkerClick={onMarkerClick} onMarkerHover={onMarkerHover} />
+                    {/* <ViewChange handleViewChange={handleViewChange} /> */}
                     <Drawer openDrawer={openDrawer} closeDrawer={closeDrawer} />
+                    <Notification openNotification={openNotification} />
                 </main>
             </div>
         </>
