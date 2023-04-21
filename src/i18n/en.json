@@ -9,13 +9,16 @@
 
   "clear sky": "Clear sky",
   "few clouds": "Few clouds",
+  "overcast clouds": "Оvercast clouds",
   "scattered clouds": "Scattered clouds",
   "broken clouds": "Broken clouds",
+  "light rain": "Light rain",
   "shower rain": "Shower rain",
   "rain": "Rain",
   "thunderstorm": "Thunderstorm",
   "snow": "Snow",
   "mist": "Mist",
+  "haze": "Haze",
 
   "Rousse": "Ruse"
 }

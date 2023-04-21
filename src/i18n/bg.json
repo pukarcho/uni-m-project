@@ -9,13 +9,16 @@
 
   "clear sky": "Ясно небе",
   "few clouds": "Малко облаци",
+  "overcast clouds": "Облачно",
   "scattered clouds": "Разкъсана облачност",
   "broken clouds": "Разкъсани облаци",
+  "light rain": "Слаб дъжд",
   "shower rain": "Дъжд",
   "rain": "Дъжд",
   "thunderstorm": "Гръмотевична буря",
   "snow": "сняг",
   "mist": "Мъгла",
+  "haze": "Мъгла",
 
   "Vidin": "Видин",
   "Montana": "Монтана",

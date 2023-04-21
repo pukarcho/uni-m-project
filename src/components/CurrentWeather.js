@@ -12,7 +12,9 @@ import { useTranslation } from 'react-i18next';
 
 import { getCurrentWeather } from '../client/weatherClient';
 import { getWindDirectionCardinal } from '../helpers/WindHelper';
-import { getAirIndexBySensor } from '../helpers/AirMetricsHelper';
+import { getAirIndexBySensor, getMinMaxTooltipText } from '../helpers/AirMetricsHelper';
+
+import Popover from "../layout/Popover";
 
 const CurrentWeather = ({ selected }) => {
     const { t } = useTranslation();
@@ -24,10 +26,10 @@ const CurrentWeather = ({ selected }) => {
 
     useEffect(() => {
         if (weatherDataState) {
-            if(selected.city === 'Ruse'){
+            if (selected.city === 'Ruse') {
                 setWeatherData(weatherDataState.find(a => a.name === 'Rousse'));
             }
-            else{
+            else {
                 setWeatherData(weatherDataState.find(a => a.name === selected.city));
             }
         }
@@ -67,11 +69,21 @@ const CurrentWeather = ({ selected }) => {
                     <span>{value}</span>
                 </div>
                 <div className='flex h-3 space-x-1'>
-                    <div className='w-12 h-full rounded-l bg-slate-100' style={airIndex.index > 0 ? { backgroundColor: airIndex.color } : null}></div>
-                    <div className='w-12 h-full bg-slate-100' style={airIndex.index > 1 ? { backgroundColor: airIndex.color } : null}></div>
-                    <div className='w-12 h-full bg-slate-100' style={airIndex.index > 2 ? { backgroundColor: airIndex.color } : null}></div>
-                    <div className='w-12 h-full bg-slate-100' style={airIndex.index > 3 ? { backgroundColor: airIndex.color } : null}></div>
-                    <div className='w-12 h-full rounded-r bg-slate-100' style={airIndex.index > 4 ? { backgroundColor: airIndex.color } : null}></div>
+                    <Popover content={getMinMaxTooltipText(0, name)}>
+                        <div className='w-12 h-full rounded-l bg-slate-100' style={airIndex.index > 0 ? { backgroundColor: airIndex.color } : null}></div>
+                    </Popover>
+                    <Popover content={getMinMaxTooltipText(1, name)}>
+                        <div className='w-12 h-full bg-slate-100' style={airIndex.index > 1 ? { backgroundColor: airIndex.color } : null}></div>
+                    </Popover>
+                    <Popover content={getMinMaxTooltipText(2, name)}>
+                        <div className='w-12 h-full bg-slate-100' style={airIndex.index > 2 ? { backgroundColor: airIndex.color } : null}></div>
+                    </Popover>
+                    <Popover content={getMinMaxTooltipText(3, name)}>
+                        <div className='w-12 h-full bg-slate-100' style={airIndex.index > 3 ? { backgroundColor: airIndex.color } : null}></div>
+                    </Popover>
+                    <Popover content={getMinMaxTooltipText(4, name)}>
+                        <div className='w-12 h-full rounded-r bg-slate-100' style={airIndex.index > 4 ? { backgroundColor: airIndex.color } : null}></div>
+                    </Popover>
                 </div>
             </div>
         );

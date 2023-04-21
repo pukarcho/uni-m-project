@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Layout from './layout/Layout';
+import Preloader from './layout/Preloader';
 
 import { useSelector, useDispatch } from 'react-redux'
 import { addDataWeather, addDataAir } from './store/slices/mapDataSlice';
@@ -14,23 +15,22 @@ function App() {
   const dispatch = useDispatch();
   //const count = useSelector((state) => state.mapData.value);
 
+  const [working, setWorking] = useState(false);
   const [fetchSuccess, setFetchSuccess] = useState(0);
 
   useEffect(() => {
-    console.log("---");
-
     if(!working && fetchSuccess === 0){
-      working = true;
-
       markers['city'].map((marker) => {
         getMapData(marker.name, marker.cordinates);
+        setWorking(true);
+        setFetchSuccess(state => state + 1);
       });
     }
   }, []);
 
   useEffect(() => {
-    if(fetchSuccess === 27){
-      working = false;
+    if(fetchSuccess <= 54){
+      setWorking(false);
     }
   }, [fetchSuccess]);
 
@@ -40,6 +40,9 @@ function App() {
     dispatch(addDataAir({data: await getCurrentAirPollution(coord), name: city}));
   };
 
+  if(working){
+    return <Preloader />;
+  }
 
   return <Layout />;
 }
