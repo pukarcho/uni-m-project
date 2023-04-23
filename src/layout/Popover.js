@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const Popover = ({ content, children }) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  
   return (
     <div className="relative inline-block">
       <div
@@ -13,9 +13,9 @@ const Popover = ({ content, children }) => {
         {children}
       </div>
       {isOpen && (
-        <div className="absolute z-20 w-[180px] bottom-5 left-[-66px] px-3 py-2 text-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm">
+        <div className="absolute z-20 w-[230px] bottom-5 right-0 px-3 py-2 text-center text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg shadow-sm">
           {content}
-          <div class="tooltip-arrow" data-popper-arrow></div>
+          <div className="tooltip-arrow" data-popper-arrow></div>
         </div>
       )}
     </div>

@@ -59,29 +59,29 @@ const CurrentWeather = ({ selected }) => {
         }
     };
 
-    const getAirMetrics = (name, value) => {
+    const getAirMetrics = (name, dislayName, value) => {
         const airIndex = getAirIndexBySensor(name, value);
 
         return (
             <div className='flex justify-between items-center space-x-2 mb-1'>
                 <div className="flex justify-between w-full">
-                    <span>{name}</span>
+                    <span>{dislayName}</span>
                     <span>{value}</span>
                 </div>
                 <div className='flex h-3 space-x-1'>
-                    <Popover content={getMinMaxTooltipText(0, name)}>
+                    <Popover content={getMinMaxTooltipText(0, name, t)}>
                         <div className='w-12 h-full rounded-l bg-slate-100' style={airIndex.index > 0 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
-                    <Popover content={getMinMaxTooltipText(1, name)}>
+                    <Popover content={getMinMaxTooltipText(1, name, t)}>
                         <div className='w-12 h-full bg-slate-100' style={airIndex.index > 1 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
-                    <Popover content={getMinMaxTooltipText(2, name)}>
+                    <Popover content={getMinMaxTooltipText(2, name, t)}>
                         <div className='w-12 h-full bg-slate-100' style={airIndex.index > 2 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
-                    <Popover content={getMinMaxTooltipText(3, name)}>
+                    <Popover content={getMinMaxTooltipText(3, name, t)}>
                         <div className='w-12 h-full bg-slate-100' style={airIndex.index > 3 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
-                    <Popover content={getMinMaxTooltipText(4, name)}>
+                    <Popover content={getMinMaxTooltipText(4, name, t)}>
                         <div className='w-12 h-full rounded-r bg-slate-100' style={airIndex.index > 4 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
                 </div>
@@ -96,7 +96,7 @@ const CurrentWeather = ({ selected }) => {
                 <div className="flex mb-16">
                     <div className="w-4/6">
                         <h1 className="text-2xl font-bold">{t(`${weatherData.name}`)}</h1>
-                        <p className="mb-8">08:20 11/12/2022</p>
+                        <p className="mb-8">{moment(weatherData.dt * 1000).format("HH:mm DD/MM/YYYY")}</p>
                         <div className="flex justify-start items-end space-x-2">
                             <h1 className="text-4xl font-bold">{Math.round(weatherData.main.temp)}<span>&deg;</span></h1>
                             <span>{t(`${weatherData.weather[0].description}`)}</span>
@@ -107,12 +107,12 @@ const CurrentWeather = ({ selected }) => {
                     </div>
                 </div>
                 <div className="mb-14">
-                    {getAirMetrics('SO2', airData.so2)}
-                    {getAirMetrics('NO2', airData.no2)}
-                    {getAirMetrics('PM10', airData.pm10)}
-                    {getAirMetrics('PM2.5', airData.pm2_5)}
-                    {getAirMetrics('O3', airData.o3)}
-                    {getAirMetrics('CO', airData.co)}
+                    {getAirMetrics('SO2', <span>SO<sub>2</sub></span>, airData.so2)}
+                    {getAirMetrics('NO2', <span>NO<sub>2</sub></span>, airData.no2)}
+                    {getAirMetrics('PM10', <span>PM<sub>10</sub></span>, airData.pm10)}
+                    {getAirMetrics('PM2.5', <span>PM<sub>2.5</sub></span>, airData.pm2_5)}
+                    {getAirMetrics('O3', <span>O<sub>3</sub></span>, airData.o3)}
+                    {getAirMetrics('CO', 'CO', airData.co)}
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">

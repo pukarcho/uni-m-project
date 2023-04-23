@@ -100,48 +100,28 @@ function Map({ mapView, onMarkerClick, onMarkerHover }) {
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir5} eventHandlers={{
                                 click: () => onMarkerClick(marker.name),
-                                // mouseover: () => onMarkerHover(true, marker.name),
-                                // mouseout: () => onMarkerHover(false),
                             }}>
-                                <Popup>
-                                    {marker.name}
-                                </Popup>
                             </Marker>
                         );
                     case 4:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir4} eventHandlers={{
                                 click: () => onMarkerClick(marker.name),
-                                // mouseover: () => onMarkerHover(true, marker.name),
-                                // mouseout: () => onMarkerHover(false),
                             }}>
-                                <Popup>
-                                    {marker.name}
-                                </Popup>
                             </Marker>
                         );
                     case 3:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir3} eventHandlers={{
                                 click: () => onMarkerClick(marker.name),
-                                // mouseover: () => onMarkerHover(true, marker.name),
-                                // mouseout: () => onMarkerHover(false),
                             }}>
-                                <Popup>
-                                    {marker.name}
-                                </Popup>
                             </Marker>
                         );
                     case 2:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir2} eventHandlers={{
                                 click: () => onMarkerClick(marker.name),
-                                // mouseover: () => onMarkerHover(true, marker.name),
-                                // mouseout: () => onMarkerHover(false),
                             }}>
-                                <Popup>
-                                    {marker.name}
-                                </Popup>
                             </Marker>
                         );
                     default:
@@ -151,9 +131,6 @@ function Map({ mapView, onMarkerClick, onMarkerHover }) {
                                 // mouseover: () => onMarkerHover(true, marker.name),
                                 // mouseout: () => onMarkerHover(false),
                             }}>
-                                <Popup>
-                                    {marker.name}
-                                </Popup>
                             </Marker>
                         );
                 }

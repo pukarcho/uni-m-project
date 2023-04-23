@@ -30,20 +30,20 @@ export const getAirIndexBySensor = (name, value) => {
     return { index: index, color: color };
 };
 
-export const getMinMaxTooltipText = (barIndex, name) => {
+export const getMinMaxTooltipText = (barIndex, name, t) => {
     switch(name){
         case 'SO2':
-            return `${airQualityNames[barIndex]}: ${sensors.SO2[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'}`;
+            return `${t(airQualityNames[barIndex])}: ${sensors.SO2[barIndex].min} - ${sensors.SO2[barIndex].max ?? '∞'} μg/m3`;
         case 'NO2':
-            return `${airQualityNames[barIndex]}: ${sensors.NO2[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'}`;
+            return `${t(airQualityNames[barIndex])}: ${sensors.NO2[barIndex].min} - ${sensors.NO2[barIndex].max ?? '∞'} μg/m3`;
         case 'PM10':
-            return `${airQualityNames[barIndex]}: ${sensors.PM10[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'}`;
+            return `${t(airQualityNames[barIndex])}: ${sensors.PM10[barIndex].min} - ${sensors.PM10[barIndex].max ?? '∞'} μg/m3`;
         case 'PM2.5':
-            return `${airQualityNames[barIndex]}: ${sensors.PM2_5[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'}`;
+            return `${t(airQualityNames[barIndex])}: ${sensors.PM2_5[barIndex].min} - ${sensors.PM2_5[barIndex].max ?? '∞'} μg/m3`;
         case 'O3':
-            return `${airQualityNames[barIndex]}: ${sensors.O3[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'}`;
+            return `${t(airQualityNames[barIndex])}: ${sensors.O3[barIndex].min} - ${sensors.O3[barIndex].max ?? '∞'} μg/m3`;
         case 'CO':
-            return `${airQualityNames[barIndex]}: ${sensors.CO[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'}`;
+            return `${t(airQualityNames[barIndex])}: ${sensors.CO[barIndex].min} - ${sensors.CO[barIndex].max ?? '∞'} μg/m3`;
         default:
             return '';
     }
@@ -51,7 +51,7 @@ export const getMinMaxTooltipText = (barIndex, name) => {
 
 const colors = ['#2FFF01', '#FFF701', '#FFA601', '#FF5D01', '#FF0101'];
 
-const airQualityNames = ['Good', 'Fair', 'Moderate', 'Poor', 'Very Poor'];
+const airQualityNames = ['good', 'fair', 'moderate', 'poor', 'very_poor'];
 
 const sensors = {
     SO2: [
