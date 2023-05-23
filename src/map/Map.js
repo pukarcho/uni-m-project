@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MapContainer, TileLayer, Marker, Popup, Polygon } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -8,7 +8,10 @@ import { divIcon } from "leaflet";
 
 import { HiMapPin } from 'react-icons/hi2';
 
-function Map({ mapView, onMarkerClick, onMarkerHover }) {
+import { selectCity, showDrawerView, selectCityCoord } from '../store/slices/navigationSlice';
+
+function Map({ mapView, onMarkerHover }) {
+    const dispatch = useDispatch();
     const airData = useSelector((state) => state.mapData.airData);
     const [coordinates, setCoordinates] = useState([]);
 
@@ -82,6 +85,12 @@ function Map({ mapView, onMarkerClick, onMarkerHover }) {
         setCoordinates(tempCordinates);
     }, []);
 
+    const onMarkerClick = (city, coord) => {
+        dispatch(selectCity(city));
+        dispatch(selectCityCoord(coord));
+        dispatch(showDrawerView(true));
+    };
+
     return (
         <MapContainer center={[42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
             <TileLayer
@@ -99,28 +108,28 @@ function Map({ mapView, onMarkerClick, onMarkerHover }) {
                     case 5:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir5} eventHandlers={{
-                                click: () => onMarkerClick(marker.name),
+                                click: () => onMarkerClick(marker.name, marker.cordinates),
                             }}>
                             </Marker>
                         );
                     case 4:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir4} eventHandlers={{
-                                click: () => onMarkerClick(marker.name),
+                                click: () => onMarkerClick(marker.name, marker.cordinates),
                             }}>
                             </Marker>
                         );
                     case 3:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir3} eventHandlers={{
-                                click: () => onMarkerClick(marker.name),
+                                click: () => onMarkerClick(marker.name, marker.cordinates),
                             }}>
                             </Marker>
                         );
                     case 2:
                         return (
                             <Marker position={marker.cordinates} icon={customMarkerIconAir2} eventHandlers={{
-                                click: () => onMarkerClick(marker.name),
+                                click: () => onMarkerClick(marker.name, marker.cordinates),
                             }}>
                             </Marker>
                         );

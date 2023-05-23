@@ -1,13 +1,17 @@
 import { useState, Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { BsFillCloudLightningFill } from 'react-icons/bs';
 import { MdLanguage } from 'react-icons/md';
-import { useTranslation } from 'react-i18next';
+import moment from 'moment';
 
 import Map from '../map/Map';
 import ViewChange from './ViewChange';
 import Drawer from './Drawer';
 import Notification from './Notification';
+import MoreInfo from './MoreInfo';
 
 const user = {
     name: 'Tom Cook',
@@ -31,10 +35,6 @@ function Layout() {
     const { t, i18n } = useTranslation();
 
     const [mapView, setMapView] = useState('city');
-    const [openDrawer, setOpenDrawer] = useState({
-        open: false,
-        data: {}
-    });
     const [openNotification, setOpenNotification] = useState({
         open: false,
         data: {}
@@ -46,15 +46,7 @@ function Layout() {
 
     const handleLanguageChange = (language) => {
         i18n.changeLanguage(language);
-    };
-
-    const onMarkerClick = (city) => {
-        setOpenDrawer({
-            open: true,
-            data: {
-                city: city
-            }
-        });
+        moment.locale(language);
     };
 
     const onMarkerHover = (show, city) => {
@@ -67,13 +59,6 @@ function Layout() {
         });
     };
 
-    const closeDrawer = () => {
-        setOpenDrawer({
-            open: false,
-            data: {}
-        });
-    }
-
     return (
         <>
             <div className="min-h-full">
@@ -84,11 +69,12 @@ function Layout() {
                                 <div className="flex h-16 items-center justify-between">
                                     <div className="flex items-center">
                                         <div className="flex-shrink-0">
-                                            <img
+                                            <BsFillCloudLightningFill className="h-8 w-8 text-blue-500" />
+                                            {/* <img
                                                 className="h-8 w-8"
                                                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                                                 alt="Your Company"
-                                            />
+                                            /> */}
                                         </div>
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
@@ -115,8 +101,7 @@ function Layout() {
                                             {/* Language dropdown */}
                                             <Menu as="div" className="relative ml-3">
                                                 <div>
-                                                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-white text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                                        <span className="sr-only">City View</span>
+                                                    <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-white text-sm">
                                                         <MdLanguage className="h-6 w-6" aria-hidden="true" />
                                                     </Menu.Button>
                                                 </div>
@@ -215,10 +200,11 @@ function Layout() {
                 </Disclosure>
 
                 <main>
-                    <Map mapView={mapView} onMarkerClick={onMarkerClick} onMarkerHover={onMarkerHover} />
+                    <Map mapView={mapView} onMarkerHover={onMarkerHover} />
                     {/* <ViewChange handleViewChange={handleViewChange} /> */}
-                    <Drawer openDrawer={openDrawer} closeDrawer={closeDrawer} />
+                    <Drawer />
                     <Notification openNotification={openNotification} />
+                    <MoreInfo />
                 </main>
             </div>
         </>

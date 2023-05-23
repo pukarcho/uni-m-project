@@ -8,7 +8,7 @@ import { addDataWeather, addDataAir } from './store/slices/mapDataSlice';
 
 import { getCurrentWeather, getCurrentAirPollution } from './client/weatherClient';
 
-let working = false;
+//let working = false;
 
 function App() {
   const markers = require('./map/markers.json');

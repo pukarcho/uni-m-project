@@ -1,12 +1,25 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Dialog, Transition } from '@headlessui/react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
+import { selectCity, showDrawerView, selectCityCoord } from '../store/slices/navigationSlice';
+
 import CurrentWeather from '../components/CurrentWeather';
 
-function Drawer({ openDrawer, closeDrawer }) {
+function Drawer() {
+  const dispatch = useDispatch();
+  const navigation = useSelector((state) => state.navigation);
+
+  const closeDrawer = () => {
+    dispatch(selectCity(null));
+    dispatch(selectCityCoord([]));
+    dispatch(showDrawerView(false));
+  };
+
   return (
-    <Transition.Root show={openDrawer.open} as={Fragment}>
+    <Transition.Root show={navigation.drawerView} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={closeDrawer}>
         <Transition.Child
           as={Fragment}
@@ -58,9 +71,9 @@ function Drawer({ openDrawer, closeDrawer }) {
                       <Dialog.Title className="text-lg font-medium text-gray-900">Panel title</Dialog.Title>
                     </div> */}
                     <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                      {/* Replace with your content */}
-                      <CurrentWeather selected={openDrawer.data ?? openDrawer.data} />
-                      {/* /End replace */}
+
+                      <CurrentWeather />
+
                     </div>
                   </div>
                 </Dialog.Panel>

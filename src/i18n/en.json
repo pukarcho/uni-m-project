@@ -1,11 +1,11 @@
 {
-  "wind": "WIND",
-  "humidity": "HUMIDITY",
-  "visibility": "VISIBILITY",
-  "feels-like": "FEELS LIKE",
-  "pressure": "PRESSURE",
-  "sunrise": "SUNRISE",
-  "sunset": "SUNSET",
+  "wind": "Wind",
+  "humidity": "Humidity",
+  "visibility": "Visibility",
+  "feels-like": "Feels like",
+  "pressure": "Pressure",
+  "sunrise": "Sunrise",
+  "sunset": "Sunset",
 
   "clear sky": "Clear sky",
   "few clouds": "Few clouds",
@@ -20,5 +20,17 @@
   "mist": "Mist",
   "haze": "Haze",
 
-  "Rousse": "Ruse"
+  "current": "Current",
+  "forecast_for_5_days": "Forecast for next 5 days",
+  "detailed_forecast_for_5_days": "Detailed forecast for the next 5 days",
+  "data_for_last_7_days": "data for last 7 days",
+
+  "Rousse": "Ruse",
+
+  "SO2_short_description": "Sulfur dioxide (SO2) is a harmful gas released during industrial processes and burning of fossil fuels. It contributes to respiratory problems, acid rain, and smog. To address this issue, stricter emissions standards and use of cleaner energy sources are needed. Individuals can also reduce their contribution to SO2 emissions by conserving energy and using sustainable transportation. Reducing SO2 emissions is crucial for protecting human health and the environment.",
+  "NO2_short_description": "Nitrogen dioxide (NO2) is a harmful gas mainly released by vehicles and industrial processes. It contributes to respiratory problems, particularly in children and the elderly. Exposure to NO2 can also cause inflammation of the airways and worsen asthma symptoms. To reduce the impact of NO2 on human health and the environment, measures such as promoting sustainable transportation and enforcing stricter emission standards are necessary.",
+  "PM10_short_description": "Particulate matter 10 (PM10) is a type of air pollutant consisting of particles smaller than 10 micrometers in diameter. It is released from sources such as transportation, construction, and industrial activities. Exposure to PM10 can cause respiratory and cardiovascular problems, as well as other health issues. To reduce the impact of PM10 on human health and the environment, measures such as controlling emissions from industrial activities and promoting sustainable transportation are necessary.",
+  "PM2_5_short_description": "Particulate matter 2.5 (PM2.5) is a type of air pollutant consisting of particles smaller than 2.5 micrometers in diameter. It is released from sources such as transportation, burning fossil fuels, and wildfires. Exposure to PM2.5 can cause respiratory and cardiovascular problems, as well as other health issues. To reduce the impact of PM2.5 on human health and the environment, measures such as promoting clean energy and enforcing stricter emission standards are necessary.",
+  "O3_short_description": "Ozone (O3) is a harmful gas formed by the reaction of sunlight with other pollutants such as nitrogen oxides and volatile organic compounds. It is a major component of smog and can cause respiratory problems, particularly in people with asthma or other lung conditions. To reduce the impact of O3 on human health and the environment, measures such as reducing emissions of nitrogen oxides and volatile organic compounds are necessary.",
+  "CO_short_description": "Carbon monoxide (CO) is a poisonous gas released from incomplete combustion of fossil fuels and biomass. It can cause headaches, nausea, and even death in high concentrations. To reduce the impact of CO on human health and the environment, measures such as promoting clean energy and enforcing stricter emission standards are necessary."
 }

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { AiFillEye, AiOutlineDashboard } from 'react-icons/ai';
-import { BsFillCloudHazeFill, BsCloudSunFill, BsCloudLightningFill, BsCloudDrizzleFill, BsFillCloudRainHeavyFill, BsFillCloudSnowFill, BsFillSunFill } from 'react-icons/bs';
 import { IoWater } from 'react-icons/io5';
 import { RiTempColdFill, RiTempHotFill } from 'react-icons/ri';
 import { TbWind, TbWindsock, TbTemperature } from 'react-icons/tb';
@@ -10,14 +9,17 @@ import { WiSunrise, WiSunset } from 'react-icons/wi';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
-import { getCurrentWeather } from '../client/weatherClient';
 import { getWindDirectionCardinal } from '../helpers/WindHelper';
 import { getAirIndexBySensor, getMinMaxTooltipText } from '../helpers/AirMetricsHelper';
+import { getWeatherIcon } from '../helpers/ForecastHelper';
+import { showMoreInfoView, selectCity, showDrawerView } from '../store/slices/navigationSlice';
 
 import Popover from "../layout/Popover";
 
-const CurrentWeather = ({ selected }) => {
+const CurrentWeather = () => {
+    const dispatch = useDispatch();
     const { t } = useTranslation();
+    const navigation = useSelector((state) => state.navigation);
     const weatherDataState = useSelector((state) => state.mapData.weatherData);
     const airDataState = useSelector((state) => state.mapData.airData);
 
@@ -26,38 +28,17 @@ const CurrentWeather = ({ selected }) => {
 
     useEffect(() => {
         if (weatherDataState) {
-            if (selected.city === 'Ruse') {
+            if (navigation.selectedCity === 'Ruse') {
                 setWeatherData(weatherDataState.find(a => a.name === 'Rousse'));
             }
             else {
-                setWeatherData(weatherDataState.find(a => a.name === selected.city));
+                setWeatherData(weatherDataState.find(a => a.name === navigation.selectedCity));
             }
         }
         if (airDataState) {
-            setAirData(airDataState.find(a => a.name === selected.city).data.list[0].components);
+            setAirData(airDataState.find(a => a.name === navigation.selectedCity).data.list[0].components);
         }
     }, [weatherDataState]);
-
-    const getWeatherIcon = (key) => {
-        switch (key) {
-            case 'Thunderstorm':
-                return <BsCloudLightningFill className="text-8xl fill-white" />;
-            case 'Drizzle':
-                return <BsCloudDrizzleFill className="text-8xl fill-white" />;
-            case 'Rain':
-                return <BsFillCloudRainHeavyFill className="text-8xl fill-white" />;
-            case 'Snow':
-                return <BsFillCloudSnowFill className="text-8xl fill-white" />;
-            case 'Mist':
-                return <BsFillCloudHazeFill className="text-8xl fill-white" />;
-            case 'Clear':
-                return <BsFillSunFill className="text-8xl fill-white" />;
-            case 'Clouds':
-                return <BsCloudSunFill className="text-8xl fill-white" />;
-            default:
-                return null;
-        }
-    };
 
     const getAirMetrics = (name, dislayName, value) => {
         const airIndex = getAirIndexBySensor(name, value);
@@ -89,11 +70,17 @@ const CurrentWeather = ({ selected }) => {
         );
     }
 
+    const moreInfoClick = () => {
+        dispatch(showMoreInfoView(true));
+        //dispatch(selectCity(null));
+        dispatch(showDrawerView(false));
+    };
+
     if (weatherData) {
         return (
             // <div className="flex items-center h-full w-96">
             <div>
-                <div className="flex mb-16">
+                <div className="flex mb-12">
                     <div className="w-4/6">
                         <h1 className="text-2xl font-bold">{t(`${weatherData.name}`)}</h1>
                         <p className="mb-8">{moment(weatherData.dt * 1000).format("HH:mm DD/MM/YYYY")}</p>
@@ -103,16 +90,19 @@ const CurrentWeather = ({ selected }) => {
                         </div>
                     </div>
                     <div className="w-2/6 flex justify-center items-end">
-                        {getWeatherIcon(weatherData.weather[0].main)}
+                        {getWeatherIcon(weatherData.weather[0].main, 'text-8xl')}
                     </div>
                 </div>
-                <div className="mb-14">
+                <div className="mb-8">
                     {getAirMetrics('SO2', <span>SO<sub>2</sub></span>, airData.so2)}
                     {getAirMetrics('NO2', <span>NO<sub>2</sub></span>, airData.no2)}
                     {getAirMetrics('PM10', <span>PM<sub>10</sub></span>, airData.pm10)}
                     {getAirMetrics('PM2.5', <span>PM<sub>2.5</sub></span>, airData.pm2_5)}
                     {getAirMetrics('O3', <span>O<sub>3</sub></span>, airData.o3)}
                     {getAirMetrics('CO', 'CO', airData.co)}
+                </div>
+                <div className="flex justify-center mb-2">
+                    <span className="cursor-pointer" onClick={moreInfoClick}>Повече информация</span>
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
@@ -139,7 +129,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <TbWindsock className="text-xl" />
-                                <span className="ml-2 text-xs">{t('wind')}</span>
+                                <span className="ml-2 text-xs">{t('wind').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{getWindDirectionCardinal(weatherData.wind.deg)}</p>
                         </div>
@@ -148,7 +138,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <TbWind className="text-xl" />
-                                <span className="ml-2 text-xs">{t('wind')}</span>
+                                <span className="ml-2 text-xs">{t('wind').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{weatherData.wind.speed} m/s</p>
                         </div>
@@ -159,7 +149,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <IoWater className="text-xl" />
-                                <span className="ml-2 text-xs">{t('humidity')}</span>
+                                <span className="ml-2 text-xs">{t('humidity').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{weatherData.main.humidity} %</p>
                         </div>
@@ -168,7 +158,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <AiFillEye className="text-xl" />
-                                <span className="ml-2 text-xs">{t('visibility')}</span>
+                                <span className="ml-2 text-xs">{t('visibility').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{weatherData.visibility / 1000} km</p>
                         </div>
@@ -179,7 +169,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <TbTemperature className="text-xl" />
-                                <span className="ml-2 text-xs">{t('feels-like')}</span>
+                                <span className="ml-2 text-xs">{t('feels-like').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{Math.round(weatherData.main.feels_like)}<span>&deg;</span></p>
                         </div>
@@ -188,7 +178,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <AiOutlineDashboard className="text-xl" />
-                                <span className="ml-2 text-xs">{t('pressure')}</span>
+                                <span className="ml-2 text-xs">{t('pressure').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{weatherData.main.pressure} Pha</p>
                         </div>
@@ -199,7 +189,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <WiSunrise className="text-xl" />
-                                <span className="ml-2 text-xs">{t('sunrise')}</span>
+                                <span className="ml-2 text-xs">{t('sunrise').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{moment.unix(weatherData.sys.sunrise).format('HH:mm')}</p>
                         </div>
@@ -208,7 +198,7 @@ const CurrentWeather = ({ selected }) => {
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
                             <div className="flex items-center">
                                 <WiSunset className="text-xl" />
-                                <span className="ml-2 text-xs">{t('sunset')}</span>
+                                <span className="ml-2 text-xs">{t('sunset').toUpperCase()}</span>
                             </div>
                             <p className="text-xl font-bold ml-6">{moment.unix(weatherData.sys.sunset).format('HH:mm')}</p>
                         </div>
