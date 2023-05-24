@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+
+import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 import Layout from './layout/Layout';
 import Preloader from './layout/Preloader';
 
-import { useSelector, useDispatch } from 'react-redux'
 import { addDataWeather, addDataAir } from './store/slices/mapDataSlice';
-
 import { getCurrentWeather, getCurrentAirPollution } from './client/weatherClient';
 
 //let working = false;
@@ -13,12 +15,19 @@ import { getCurrentWeather, getCurrentAirPollution } from './client/weatherClien
 function App() {
   const markers = require('./map/markers.json');
   const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
   //const count = useSelector((state) => state.mapData.value);
 
   const [working, setWorking] = useState(false);
   const [fetchSuccess, setFetchSuccess] = useState(0);
 
   useEffect(() => {
+    if(localStorage.getItem('language') === null){
+      i18n.changeLanguage('bg');
+      moment.locale('bg');
+      localStorage.setItem('language', 'bg');
+    }
+
     if(!working && fetchSuccess === 0){
       markers['city'].map((marker) => {
         getMapData(marker.name, marker.cordinates);

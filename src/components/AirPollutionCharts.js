@@ -14,7 +14,7 @@ import { getWeatherIcon } from '../helpers/ForecastHelper';
 import { getWindDirectionCardinal } from "../helpers/WindHelper";
 
 function AirPollutionCharts() {
-    const { i18n, t } = useTranslation();
+    const { t } = useTranslation();
     const navigation = useSelector((state) => state.navigation);
     const weatherDataState = useSelector((state) => state.mapData.weatherData);
 

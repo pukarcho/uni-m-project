@@ -1,5 +1,6 @@
 import { useState, Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Routes, Route, Link, useLocation } from "react-router-dom";
 
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -12,26 +13,24 @@ import ViewChange from './ViewChange';
 import Drawer from './Drawer';
 import Notification from './Notification';
 import MoreInfo from './MoreInfo';
+import Information from '../components/Information';
 
 const user = {
     name: 'Tom Cook',
     email: 'tom@example.com',
     imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-}
-const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Calendar', href: '#', current: false },
-]
+};
 const languages = [
     { name: 'Bulgarian', key: 'bg' },
     { name: 'English', key: 'en' },
-]
+];
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
 function Layout() {
+    const location = useLocation();
     const { t, i18n } = useTranslation();
 
     const [mapView, setMapView] = useState('city');
@@ -40,6 +39,11 @@ function Layout() {
         data: {}
     });
 
+    const navigation = [
+        { name: t('nav_map'), href: '/' },
+        { name: t('nav_air_pollution'), href: '/air-pollution' },
+    ];
+
     const handleViewChange = (type) => {
         setMapView(type);
     };
@@ -47,6 +51,7 @@ function Layout() {
     const handleLanguageChange = (language) => {
         i18n.changeLanguage(language);
         moment.locale(language);
+        localStorage.setItem('language', language);
     };
 
     const onMarkerHover = (show, city) => {
@@ -79,19 +84,25 @@ function Layout() {
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
                                                 {navigation.map((item) => (
-                                                    <a
-                                                        key={item.name}
-                                                        href={item.href}
-                                                        className={classNames(
-                                                            item.current
-                                                                ? 'bg-gray-900 text-white'
-                                                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                            'px-3 py-2 rounded-md text-sm font-medium'
-                                                        )}
-                                                        aria-current={item.current ? 'page' : undefined}
-                                                    >
-                                                        {item.name}
-                                                    </a>
+                                                    <Link to={item.href} className={classNames(
+                                                        location.pathname === item.href
+                                                            ? 'bg-gray-900 text-white'
+                                                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                    )}>{item.name}</Link>
+                                                    // <a
+                                                    //     key={item.name}
+                                                    //     href={item.href}
+                                                    //     className={classNames(
+                                                    //         item.current
+                                                    //             ? 'bg-gray-900 text-white'
+                                                    //             : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                    //         'px-3 py-2 rounded-md text-sm font-medium'
+                                                    //     )}
+                                                    //     aria-current={item.current ? 'page' : undefined}
+                                                    // >
+                                                    //     {item.name}
+                                                    // </a>
                                                 ))}
                                             </div>
                                         </div>
@@ -120,7 +131,7 @@ function Layout() {
                                                                 <span
                                                                     className={classNames(
                                                                         i18n.language === item.key ? 'bg-gray-100' : '',
-                                                                        'block px-4 py-2 text-sm text-gray-700'
+                                                                        'block px-4 py-2 text-sm text-gray-700 cursor-pointer'
                                                                     )}
                                                                     onClick={() => handleLanguageChange(item.key)}
                                                                 >
@@ -200,7 +211,10 @@ function Layout() {
                 </Disclosure>
 
                 <main>
-                    <Map mapView={mapView} onMarkerHover={onMarkerHover} />
+                    <Routes>
+                        <Route path="/" exact element={<Map mapView={mapView} onMarkerHover={onMarkerHover} />} />
+                        <Route path="air-pollution" element={<Information/>} />
+                    </Routes>
                     {/* <ViewChange handleViewChange={handleViewChange} /> */}
                     <Drawer />
                     <Notification openNotification={openNotification} />

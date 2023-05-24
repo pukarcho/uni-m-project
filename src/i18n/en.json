@@ -1,4 +1,13 @@
 {
+  "nav_map": "Map",
+  "nav_air_pollution": "Air Pollution",
+
+  "good": "Good",
+  "fair": "Fair",
+  "moderate": "Moderate",
+  "poor": "Poor",
+  "very_poor": "Very poor",
+
   "wind": "Wind",
   "humidity": "Humidity",
   "visibility": "Visibility",
@@ -32,5 +41,16 @@
   "PM10_short_description": "Particulate matter 10 (PM10) is a type of air pollutant consisting of particles smaller than 10 micrometers in diameter. It is released from sources such as transportation, construction, and industrial activities. Exposure to PM10 can cause respiratory and cardiovascular problems, as well as other health issues. To reduce the impact of PM10 on human health and the environment, measures such as controlling emissions from industrial activities and promoting sustainable transportation are necessary.",
   "PM2_5_short_description": "Particulate matter 2.5 (PM2.5) is a type of air pollutant consisting of particles smaller than 2.5 micrometers in diameter. It is released from sources such as transportation, burning fossil fuels, and wildfires. Exposure to PM2.5 can cause respiratory and cardiovascular problems, as well as other health issues. To reduce the impact of PM2.5 on human health and the environment, measures such as promoting clean energy and enforcing stricter emission standards are necessary.",
   "O3_short_description": "Ozone (O3) is a harmful gas formed by the reaction of sunlight with other pollutants such as nitrogen oxides and volatile organic compounds. It is a major component of smog and can cause respiratory problems, particularly in people with asthma or other lung conditions. To reduce the impact of O3 on human health and the environment, measures such as reducing emissions of nitrogen oxides and volatile organic compounds are necessary.",
-  "CO_short_description": "Carbon monoxide (CO) is a poisonous gas released from incomplete combustion of fossil fuels and biomass. It can cause headaches, nausea, and even death in high concentrations. To reduce the impact of CO on human health and the environment, measures such as promoting clean energy and enforcing stricter emission standards are necessary."
+  "CO_short_description": "Carbon monoxide (CO) is a poisonous gas released from incomplete combustion of fossil fuels and biomass. It can cause headaches, nausea, and even death in high concentrations. To reduce the impact of CO on human health and the environment, measures such as promoting clean energy and enforcing stricter emission standards are necessary.",
+
+  "air_pollution": "Air pollution",
+  "air_pollution_part_1": "In today's fast-paced world, air pollution has become one of the most significant environmental challenges we face. The harmful effects of polluted air on human health and the environment are undeniable, making it critical for people and communities to have access to accurate, real-time air quality information.",
+  "air_pollution_part_2": "This web application is intended to provide users with comprehensive information about air pollution levels in their area. With its user-friendly interface and reliable features, the app aims to empower people to make informed decisions and take necessary actions to mitigate the effects of air pollution.",
+  "pollution": "pollution",
+  "reference_values_for": "Reference values for",
+  "air_measurement": "Air measurement",
+  "air_measurement_part_1": "Air pollution is typically measured in terms of particulate matter (PM) concentrations, which are expressed as micrograms per cubic meter (μg/m³). PM refers to tiny particles suspended in the air, which can include dust, soot, smoke, and various pollutants emitted from human activities.",
+  "air_measurement_part_2": "The concentration of PM is categorized into different size ranges, such as PM10 and PM2.5, based on the diameter of the particles. PM10 refers to particles with a diameter of 10 micrometers or smaller, while PM2.5 refers to particles with a diameter of 2.5 micrometers or smaller.",
+  "air_measurement_part_3": "The World Health Organization (WHO) has established air quality guidelines for PM concentrations. According to the WHO, the annual average guideline for PM2.5 is 10 μg/m³, while the 24-hour average guideline is 25 μg/m³. For PM10, the annual average guideline is 20 μg/m³, and the 24-hour average guideline is 50 μg/m³.",
+  "air_measurement_part_4": "It's important to note that air pollution levels can vary significantly depending on the location, season, weather conditions, and proximity to pollution sources. In highly industrialized areas or regions with heavy traffic, the PM concentrations can often exceed the WHO guidelines, leading to adverse health effects for the population exposed to the polluted air. Monitoring and reducing air pollution are crucial for maintaining good air quality and protecting public health."
 }

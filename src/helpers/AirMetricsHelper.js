@@ -51,7 +51,7 @@ export const getMinMaxTooltipText = (barIndex, name, t) => {
 
 export const colors = ['#2FFF01', '#FFF701', '#FFA601', '#FF5D01', '#FF0101'];
 
-const airQualityNames = ['good', 'fair', 'moderate', 'poor', 'very_poor'];
+export const airQualityNames = ['good', 'fair', 'moderate', 'poor', 'very_poor'];
 
 export const sensors = {
     SO2: [
