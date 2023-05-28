@@ -57,8 +57,8 @@ function Information() {
                     <div className="flex flex-col items-center">
                         <h3 className="text-2xl mb-6">{t('air_pollution')}</h3>
                         <div className="flex flex-col space-y-6">
-                            <p>{t('air_pollution_part_1')}</p>
-                            <p>{t('air_pollution_part_2')}</p>
+                            <p className="indent-12">{t('air_pollution_part_1')}</p>
+                            <p className="indent-12">{t('air_pollution_part_2')}</p>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ function Information() {
                                             <div className="flex justify-center items-center space-x-12">
                                                 <div className="w-[50%]">
                                                     <h3 className="text-2xl mb-4">{tab.name} {t('pollution')}</h3>
-                                                    <p>{tab.shortDescription}</p>
+                                                    <p className="indent-12">{tab.shortDescription}</p>
                                                 </div>
                                                 <div className="h-[400px] w-[50%]">
                                                     <img className="h-full" src={tab.image} alt="image" />
@@ -131,15 +131,28 @@ function Information() {
                         <h3 className="text-2xl mb-6">{t('air_measurement')}</h3>
                         <div className="flex justify-center items-center space-x-6">
                             <div className="flex flex-col items-center w-1/2 space-y-6">
-                                <p>{t('air_measurement_part_1')}</p>
-                                <p>{t('air_measurement_part_2')}</p>
+                                <p className="indent-12">{t('air_measurement_part_1')}</p>
+                                <p className="indent-12">{t('air_measurement_part_2')}</p>
                             </div>
                             <img className="h-full w-1/2" src="https://debati.bg/wp-content/uploads/2021/02/8450385.jpg" alt="image" />
                         </div>
-                        <p>{t('air_measurement_part_3')}</p>
-                        <p>{t('air_measurement_part_4')}</p>
+                        <p className="indent-12">{t('air_measurement_part_3')}</p>
+                        <p className="indent-12">{t('air_measurement_part_4')}</p>
                     </div>
                 </div>
+            </div>
+            {/* Footer */}
+            <div className="flex justify-center bg-stone-800">
+                <div className="flex flex-col items-center w-[1000px] my-8">
+                    <h3 className="text-xl text-white">{t('data_source')}</h3>
+                    <div className="flex justify-center items-center space-x-12">
+                        <img className="w-1/2 h-1/2" src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="image" />
+                        <p className="text-white">{t('OpenWeatherAPI_description')}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="flex justify-center bg-black py-2">
+                <span className="text-white">Copy</span>
             </div>
         </Scrollbars>
     );

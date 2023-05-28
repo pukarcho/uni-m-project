@@ -10,6 +10,8 @@ import { HiMapPin } from 'react-icons/hi2';
 
 import { selectCity, showDrawerView, selectCityCoord } from '../store/slices/navigationSlice';
 
+import MapHelperText from './MapHelperText';
+
 function Map({ mapView, onMarkerHover }) {
     const dispatch = useDispatch();
     const airData = useSelector((state) => state.mapData.airData);
@@ -92,59 +94,62 @@ function Map({ mapView, onMarkerHover }) {
     };
 
     return (
-        <MapContainer center={[42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
-            <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {coordinates.map((coord) => (
-                <Polygon positions={coord} />
-            ))}
-            {markers[mapView].map((marker) => {
-                const cityAir = airData.find(a => a.name === marker.name);
-                const cityAirIndex = cityAir ? cityAir.data.list[0].main.aqi : null;
+        <div>
+            <MapContainer center={[42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
+                <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {coordinates.map((coord) => (
+                    <Polygon positions={coord} />
+                ))}
+                {markers[mapView].map((marker) => {
+                    const cityAir = airData.find(a => a.name === marker.name);
+                    const cityAirIndex = cityAir ? cityAir.data.list[0].main.aqi : null;
 
-                switch (cityAirIndex) {
-                    case 5:
-                        return (
-                            <Marker position={marker.cordinates} icon={customMarkerIconAir5} eventHandlers={{
-                                click: () => onMarkerClick(marker.name, marker.cordinates),
-                            }}>
-                            </Marker>
-                        );
-                    case 4:
-                        return (
-                            <Marker position={marker.cordinates} icon={customMarkerIconAir4} eventHandlers={{
-                                click: () => onMarkerClick(marker.name, marker.cordinates),
-                            }}>
-                            </Marker>
-                        );
-                    case 3:
-                        return (
-                            <Marker position={marker.cordinates} icon={customMarkerIconAir3} eventHandlers={{
-                                click: () => onMarkerClick(marker.name, marker.cordinates),
-                            }}>
-                            </Marker>
-                        );
-                    case 2:
-                        return (
-                            <Marker position={marker.cordinates} icon={customMarkerIconAir2} eventHandlers={{
-                                click: () => onMarkerClick(marker.name, marker.cordinates),
-                            }}>
-                            </Marker>
-                        );
-                    default:
-                        return (
-                            <Marker position={marker.cordinates} icon={customMarkerIconAir1} eventHandlers={{
-                                click: () => onMarkerClick(marker.name),
-                                // mouseover: () => onMarkerHover(true, marker.name),
-                                // mouseout: () => onMarkerHover(false),
-                            }}>
-                            </Marker>
-                        );
-                }
-            })}
-        </MapContainer>
+                    switch (cityAirIndex) {
+                        case 5:
+                            return (
+                                <Marker key={marker.name} position={marker.cordinates} icon={customMarkerIconAir5} eventHandlers={{
+                                    click: () => onMarkerClick(marker.name, marker.cordinates),
+                                }}>
+                                </Marker>
+                            );
+                        case 4:
+                            return (
+                                <Marker key={marker.name} position={marker.cordinates} icon={customMarkerIconAir4} eventHandlers={{
+                                    click: () => onMarkerClick(marker.name, marker.cordinates),
+                                }}>
+                                </Marker>
+                            );
+                        case 3:
+                            return (
+                                <Marker key={marker.name} position={marker.cordinates} icon={customMarkerIconAir3} eventHandlers={{
+                                    click: () => onMarkerClick(marker.name, marker.cordinates),
+                                }}>
+                                </Marker>
+                            );
+                        case 2:
+                            return (
+                                <Marker key={marker.name} position={marker.cordinates} icon={customMarkerIconAir2} eventHandlers={{
+                                    click: () => onMarkerClick(marker.name, marker.cordinates),
+                                }}>
+                                </Marker>
+                            );
+                        default:
+                            return (
+                                <Marker key={marker.name} position={marker.cordinates} icon={customMarkerIconAir1} eventHandlers={{
+                                    click: () => onMarkerClick(marker.name, marker.cordinates),
+                                    // mouseover: () => onMarkerHover(true, marker.name),
+                                    // mouseout: () => onMarkerHover(false),
+                                }}>
+                                </Marker>
+                            );
+                    }
+                })}
+            </MapContainer>
+            {/* <MapHelperText /> */}
+        </div>
     );
 }
 

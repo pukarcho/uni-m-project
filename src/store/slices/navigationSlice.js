@@ -5,6 +5,7 @@ const initialState = {
     selectedCityCoord: [],
     drawerView: false,
     moreInfoView: false,
+    preloaderView: true,
 }
 
 export const navigationSlice = createSlice({
@@ -23,9 +24,12 @@ export const navigationSlice = createSlice({
         showMoreInfoView: (state, action) => {
             state.moreInfoView = action.payload;
         },
+        showPreloader: (state, action) => {
+            state.preloaderView = action.payload;
+        },
     },
 })
 
-export const { selectCity, selectCityCoord, showDrawerView, showMoreInfoView } = navigationSlice.actions
+export const { selectCity, selectCityCoord, showDrawerView, showMoreInfoView, showPreloader } = navigationSlice.actions
 
 export default navigationSlice.reducer

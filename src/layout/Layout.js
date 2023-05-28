@@ -14,6 +14,7 @@ import Drawer from './Drawer';
 import Notification from './Notification';
 import MoreInfo from './MoreInfo';
 import Information from '../components/Information';
+import Preloader from './Preloader';
 
 const user = {
     name: 'Tom Cook',
@@ -219,6 +220,7 @@ function Layout() {
                     <Drawer />
                     <Notification openNotification={openNotification} />
                     <MoreInfo />
+                    <Preloader />
                 </main>
             </div>
         </>

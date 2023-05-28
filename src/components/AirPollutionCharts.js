@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useTranslation } from "react-i18next";
 import { AiOutlineInfoCircle, AiOutlineLineChart } from "react-icons/ai";
@@ -12,8 +12,10 @@ import { getHistoryAirPollution, getForecast } from '../client/weatherClient';
 
 import { getWeatherIcon } from '../helpers/ForecastHelper';
 import { getWindDirectionCardinal } from "../helpers/WindHelper";
+import { showPreloader } from "../store/slices/navigationSlice";
 
 function AirPollutionCharts() {
+    const dispatch = useDispatch();
     const { t } = useTranslation();
     const navigation = useSelector((state) => state.navigation);
     const weatherDataState = useSelector((state) => state.mapData.weatherData);
@@ -124,6 +126,10 @@ function AirPollutionCharts() {
 
         setForecastData(tempForecastData);
         setForecastChartData(tempFerecastChartData);
+
+        setTimeout(() => {
+            dispatch(showPreloader(false));
+      }, 1000);
     };
 
     const getMostCommonElememt = (array) => {
@@ -146,12 +152,12 @@ function AirPollutionCharts() {
     };
 
     return (
-        <div className="w-full text-white" style={{ height: "calc(100% - 8rem)" }}>
+        <div className="w-full text-white">
             <div className="flex justify-between mx-4">
                 <h3 className="mb-2 text-2xl">{t(navigation.selectedCity)}</h3>
                 <span>{weatherData && moment(weatherData.dt * 1000).format("HH:mm DD/MM/YYYY")}</span>
             </div>
-            <Scrollbars style={{ width: '100%', height: 'calc(100vh - 10rem)' }}>
+            <Scrollbars style={{ width: '100%', height: 'calc(100vh - 7rem)' }}>
                 <div className="flex flex-wrap">
                     <div className="w-1/3 p-4">
                         <div className="bg-gray-700 rounded-2xl p-4">

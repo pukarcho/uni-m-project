@@ -8,11 +8,12 @@ import { TbWind, TbWindsock, TbTemperature } from 'react-icons/tb';
 import { WiSunrise, WiSunset } from 'react-icons/wi';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
+import Scrollbars from "react-custom-scrollbars-2";
 
 import { getWindDirectionCardinal } from '../helpers/WindHelper';
 import { getAirIndexBySensor, getMinMaxTooltipText } from '../helpers/AirMetricsHelper';
 import { getWeatherIcon } from '../helpers/ForecastHelper';
-import { showMoreInfoView, selectCity, showDrawerView } from '../store/slices/navigationSlice';
+import { showMoreInfoView, selectCity, showDrawerView, showPreloader } from '../store/slices/navigationSlice';
 
 import Popover from "../layout/Popover";
 
@@ -71,6 +72,7 @@ const CurrentWeather = () => {
     }
 
     const moreInfoClick = () => {
+        dispatch(showPreloader(true));
         dispatch(showMoreInfoView(true));
         //dispatch(selectCity(null));
         dispatch(showDrawerView(false));
@@ -78,8 +80,7 @@ const CurrentWeather = () => {
 
     if (weatherData) {
         return (
-            // <div className="flex items-center h-full w-96">
-            <div>
+            <Scrollbars style={{ width: '100%', height: 'calc(100vh - 6rem)' }}>
                 <div className="flex mb-12">
                     <div className="w-4/6">
                         <h1 className="text-2xl font-bold">{t(`${weatherData.name}`)}</h1>
@@ -101,8 +102,8 @@ const CurrentWeather = () => {
                     {getAirMetrics('O3', <span>O<sub>3</sub></span>, airData.o3)}
                     {getAirMetrics('CO', 'CO', airData.co)}
                 </div>
-                <div className="flex justify-center mb-2">
-                    <span className="cursor-pointer" onClick={moreInfoClick}>Повече информация</span>
+                <div className="flex justify-center mb-4">
+                    <div className="py-2 px-4 bg-slate-100 text-gray-700 rounded-lg cursor-pointer hover:bg-white" onClick={moreInfoClick}>{t('more_information')}</div>
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
@@ -204,7 +205,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Scrollbars>
             // </div>
         );
     }

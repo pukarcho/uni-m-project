@@ -66,7 +66,7 @@ function Drawer() {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="flex h-full flex-col overflow-y-scroll bg-gray-800 py-6 shadow-xl text-white">
+                  <div className="flex h-full flex-col bg-gray-800 py-6 shadow-xl text-white">
                     {/* <div className="px-4 sm:px-6">
                       <Dialog.Title className="text-lg font-medium text-gray-900">Panel title</Dialog.Title>
                     </div> */}

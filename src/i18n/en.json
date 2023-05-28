@@ -2,6 +2,8 @@
   "nav_map": "Map",
   "nav_air_pollution": "Air Pollution",
 
+  "more_information": "More Information",
+
   "good": "Good",
   "fair": "Fair",
   "moderate": "Moderate",
@@ -52,5 +54,7 @@
   "air_measurement_part_1": "Air pollution is typically measured in terms of particulate matter (PM) concentrations, which are expressed as micrograms per cubic meter (μg/m³). PM refers to tiny particles suspended in the air, which can include dust, soot, smoke, and various pollutants emitted from human activities.",
   "air_measurement_part_2": "The concentration of PM is categorized into different size ranges, such as PM10 and PM2.5, based on the diameter of the particles. PM10 refers to particles with a diameter of 10 micrometers or smaller, while PM2.5 refers to particles with a diameter of 2.5 micrometers or smaller.",
   "air_measurement_part_3": "The World Health Organization (WHO) has established air quality guidelines for PM concentrations. According to the WHO, the annual average guideline for PM2.5 is 10 μg/m³, while the 24-hour average guideline is 25 μg/m³. For PM10, the annual average guideline is 20 μg/m³, and the 24-hour average guideline is 50 μg/m³.",
-  "air_measurement_part_4": "It's important to note that air pollution levels can vary significantly depending on the location, season, weather conditions, and proximity to pollution sources. In highly industrialized areas or regions with heavy traffic, the PM concentrations can often exceed the WHO guidelines, leading to adverse health effects for the population exposed to the polluted air. Monitoring and reducing air pollution are crucial for maintaining good air quality and protecting public health."
+  "air_measurement_part_4": "It's important to note that air pollution levels can vary significantly depending on the location, season, weather conditions, and proximity to pollution sources. In highly industrialized areas or regions with heavy traffic, the PM concentrations can often exceed the WHO guidelines, leading to adverse health effects for the population exposed to the polluted air. Monitoring and reducing air pollution are crucial for maintaining good air quality and protecting public health.",
+  "data_source": "Data source",
+  "OpenWeatherAPI_description": "The OpenWeatherAPI is a powerful tool that provides access to a wide range of weather data and forecasts. It allows users to retrieve real-time weather information, historical weather data, and forecasts for specific locations around the world."
 }

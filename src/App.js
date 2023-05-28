@@ -5,9 +5,9 @@ import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 
 import Layout from './layout/Layout';
-import Preloader from './layout/Preloader';
 
 import { addDataWeather, addDataAir } from './store/slices/mapDataSlice';
+import { showPreloader } from './store/slices/navigationSlice';
 import { getCurrentWeather, getCurrentAirPollution } from './client/weatherClient';
 
 //let working = false;
@@ -38,8 +38,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(fetchSuccess <= 54){
+    if(fetchSuccess >= 54){
       setWorking(false);
+      setTimeout(() => {
+        dispatch(showPreloader(false));
+      }, 1000);
+      
     }
   }, [fetchSuccess]);
 
@@ -48,10 +52,6 @@ function App() {
     dispatch(addDataWeather(await getCurrentWeather(city)));
     dispatch(addDataAir({data: await getCurrentAirPollution(coord), name: city}));
   };
-
-  if(working){
-    return <Preloader />;
-  }
 
   return <Layout />;
 }
