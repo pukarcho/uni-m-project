@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if(fetchSuccess >= 54){
+    if(fetchSuccess >= 27){
       setWorking(false);
       setTimeout(() => {
         dispatch(showPreloader(false));
