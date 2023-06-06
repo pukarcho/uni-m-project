@@ -17,7 +17,7 @@ function MoreInfo() {
                 <div className="absolute top-6 right-6 text-white text-2xl cursor-pointer" onClick={closeMoreInfoView}>
                     <AiOutlineClose />
                 </div>
-                <div className="pt-12 pl-12 pr-12">
+                <div className="pt-12 px-12 max-md:px-2">
                     <AirPollutionCharts />
                 </div>
             </div>

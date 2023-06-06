@@ -129,7 +129,7 @@ function AirPollutionCharts() {
 
         setTimeout(() => {
             dispatch(showPreloader(false));
-      }, 1000);
+        }, 1000);
     };
 
     const getMostCommonElememt = (array) => {
@@ -159,12 +159,12 @@ function AirPollutionCharts() {
             </div>
             <Scrollbars style={{ width: '100%', height: 'calc(100vh - 7rem)' }}>
                 <div className="flex flex-wrap">
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <div className="bg-gray-700 rounded-2xl p-4">
                             <h3>{t('current')}</h3>
                             <div className="h-[270px]">
                                 {weatherData && (
-                                    <div className="p-6">
+                                    <div>
                                         <div className="flex justify-between items-end">
                                             <div className="flex flex-col">
                                                 <h1 className="text-4xl font-bold">{Math.round(weatherData.main.temp)}<span>&deg;</span></h1>
@@ -193,66 +193,70 @@ function AirPollutionCharts() {
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <div className="bg-gray-700 rounded-2xl p-4">
                             <h3>{t('forecast_for_5_days')}</h3>
-                            <div className="flex justify-center items-center h-[270px]">
-                                {forecastData.map((data, key) => (
-                                    <div key={key} className={`flex flex-col items-center h-48 w-24 border-r-[1px] ${key === 0 ? 'border-l-[1px]' : ''}`}>
-                                        <span className="mb-4">{data.date}</span>
-                                        {getWeatherIcon(getMostCommonElememt(data.weatherIcons), 'text-6xl')}
-                                        <span className="text-xl mt-4">{Math.round(Math.max(...data.main.map(item => item.temp_max)))}<span>&deg;</span></span>
-                                        <div className="w-8 border-b-[1px]"></div>
-                                        <span className="text-xl">{Math.round(Math.min(...data.main.map(item => item.temp_min)))}<span>&deg;</span></span>
+                            <div className="h-[270px]">
+                                <Scrollbars style={{ width: '100%', height: '100%' }}>
+                                    <div className="flex justify-center items-center h-full w-full">
+                                        {forecastData.map((data, key) => (
+                                            <div key={key} className={`flex flex-col items-center h-48 w-24 border-r-[1px] ${key === 0 ? 'border-l-[1px]' : ''}`}>
+                                                <span className="mb-4">{data.date}</span>
+                                                {getWeatherIcon(getMostCommonElememt(data.weatherIcons), 'text-6xl')}
+                                                <span className="text-xl mt-4">{Math.round(Math.max(...data.main.map(item => item.temp_max)))}<span>&deg;</span></span>
+                                                <div className="w-8 border-b-[1px]"></div>
+                                                <span className="text-xl">{Math.round(Math.min(...data.main.map(item => item.temp_min)))}<span>&deg;</span></span>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </Scrollbars>
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <div className="bg-gray-700 rounded-2xl p-4">
                             <h3>{t('detailed_forecast_for_5_days')}</h3>
-                            <div className="h-[270px]">
+                            <div className="h-[270px] max-md:h-[200px]">
                                 <LineChartForecast data={forecastChartData} />
                             </div>
                         </div>
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>SO<sub>2</sub> {t('data_for_last_7_days')}</h3>}
                             chart={<LineChartAirPollution data={SO2Data} sensorName='SO2' />}
                             info={t('SO2_short_description')}
                         />
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>NO<sub>2</sub> {t('data_for_last_7_days')}</h3>}
                             chart={<LineChartAirPollution data={NO2Data} sensorName='NO2' />}
                             info={t('NO2_short_description')}
                         />
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>PM<sub>10</sub> {t('data_for_last_7_days')}</h3>}
                             chart={<LineChartAirPollution data={PM10Data} sensorName='PM10' />}
                             info={t('PM10_short_description')}
                         />
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>PM<sub>2.5</sub> {t('data_for_last_7_days')}</h3>}
                             chart={<LineChartAirPollution data={PM2_5Data} sensorName='PM2_5' />}
                             info={t('PM2_5_short_description')}
                         />
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>O<sub>3</sub> {t('data_for_last_7_days')}</h3>}
                             chart={<LineChartAirPollution data={O3Data} sensorName='O3' />}
                             info={t('O3_short_description')}
                         />
                     </div>
-                    <div className="w-1/3 p-4">
+                    <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>CO {t('data_for_last_7_days')}</h3>}
                             chart={<LineChartAirPollution data={COData} sensorName='CO' />}
@@ -278,7 +282,7 @@ function ChartWrapper({ head, chart, info }) {
                     <AiOutlineInfoCircle className="text-xl cursor-pointer" onClick={() => setShowInfoText(state => !state)} />
                 )}
             </div>
-            <div className="h-[270px]">
+            <div className="h-[270px] max-md:h-[200px]">
                 {showInfoText ? (
                     <div className="p-4">{info}</div>
                 ) : (

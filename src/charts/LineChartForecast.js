@@ -40,14 +40,14 @@ function LineChartForecast({ data }) {
                 data={data}
                 margin={{
                     top: 5,
-                    right: 25,
+                    right: 5,
                     left: 0,
                     bottom: 5,
                 }}
             >
                 <CartesianGrid strokeDasharray="3 3" strokeOpacity={0.3} />
                 <XAxis dataKey="date" tickFormatter={dateFormatter} stroke='white' />
-                <YAxis stroke='white' />
+                <YAxis stroke='white' width={35} />
                 <Tooltip content={<CustomTooltip />} />
                 <Line type="basis" dataKey="max" stroke="white" dot={false} />
                 <Line type="basis" dataKey="feelsLike" stroke="blue" dot={false} />

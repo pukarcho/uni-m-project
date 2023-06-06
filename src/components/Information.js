@@ -53,7 +53,7 @@ function Information() {
     return (
         <Scrollbars style={{ width: '100%', height: 'calc(100vh - 4rem)' }}>
             <div className="flex justify-center">
-                <div className="w-[1000px] my-8">
+                <div className="w-[1000px] my-8 max-lg:mx-8">
                     <div className="flex flex-col items-center">
                         <h3 className="text-2xl mb-6">{t('air_pollution')}</h3>
                         <div className="flex flex-col space-y-6">
@@ -64,9 +64,9 @@ function Information() {
                 </div>
             </div>
             <div className="flex justify-center">
-                <div className="w-full px-2 py-8 sm:px-0">
+                <div className="w-full py-8 sm:px-0">
                     <Tab.Group>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center mx-2">
                             <Tab.List className="flex space-x-1 rounded-xl bg-gray-700 p-1 mb-8 w-[28rem]">
                                 {tabs.map((tab) => (
                                     <Tab key={tab.id}
@@ -88,24 +88,24 @@ function Information() {
                                 <Tab.Panel key={tab.id}>
                                     <div className="flex justify-center bg-gray-700">
                                         <div className="w-[1000px] text-white">
-                                            <div className="flex justify-center items-center space-x-12">
-                                                <div className="w-[50%]">
-                                                    <h3 className="text-2xl mb-4">{tab.name} {t('pollution')}</h3>
+                                            <div className="flex justify-center items-center space-x-12 max-lg:m-8">
+                                                <div className="w-1/2 max-md:w-full">
+                                                    <h3 className="text-2xl mb-4 max-md:text-center">{tab.name} {t('pollution')}</h3>
                                                     <p className="indent-12">{tab.shortDescription}</p>
                                                 </div>
-                                                <div className="h-[400px] w-[50%]">
+                                                <div className="h-[400px] w-1/2 max-lg:hidden">
                                                     <img className="h-full" src={tab.image} alt="image" />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="flex flex-col items-center my-8">
+                                    <div className="flex flex-col items-center my-8 max-md:mx-8">
                                         <h3 className="text-2xl mb-6">{t('reference_values_for')} {tab.name}</h3>
-                                        <div className="flex justify-center">
+                                        <div className="flex flex-wrap justify-center">
                                             {airQualityNames.map((name, key) => (
                                                 <div key={key} className="flex justify-center items-center m-4">
                                                     <div className="w-12 h-12 rounded-full m-2" style={{ backgroundColor: colors[key] }}></div>
-                                                    <div className="flex flex-col items-center">
+                                                    <div className="flex flex-col items-center w-[100px]">
                                                         <h3>{t(name)}</h3>
                                                         <span>{sensors[tab.id][key].min} μg/m3</span>
                                                         <span>{sensors[tab.id][key].max ? sensors[tab.id][key].max : '∞'} μg/m3</span>
@@ -129,15 +129,15 @@ function Information() {
                 <div className="w-[1000px] my-8">
                     <div className="flex flex-col items-center space-y-6">
                         <h3 className="text-2xl mb-6">{t('air_measurement')}</h3>
-                        <div className="flex justify-center items-center space-x-6">
-                            <div className="flex flex-col items-center w-1/2 space-y-6">
+                        <div className="flex max-md:flex-col justify-center items-center md:space-x-6">
+                            <div className="flex flex-col items-center md:w-1/2 space-y-6 max-md:m-8 max-lg:mx-8">
                                 <p className="indent-12">{t('air_measurement_part_1')}</p>
                                 <p className="indent-12">{t('air_measurement_part_2')}</p>
                             </div>
-                            <img className="h-full w-1/2" src="https://debati.bg/wp-content/uploads/2021/02/8450385.jpg" alt="image" />
+                            <img className="h-full md:w-1/2 max-md:my-4" src="https://debati.bg/wp-content/uploads/2021/02/8450385.jpg" alt="image" />
                         </div>
-                        <p className="indent-12">{t('air_measurement_part_3')}</p>
-                        <p className="indent-12">{t('air_measurement_part_4')}</p>
+                        <p className="indent-12 max-lg:mx-8">{t('air_measurement_part_3')}</p>
+                        <p className="indent-12 max-lg:mx-8">{t('air_measurement_part_4')}</p>
                     </div>
                 </div>
             </div>
@@ -145,15 +145,15 @@ function Information() {
             <div className="flex justify-center bg-stone-800">
                 <div className="flex flex-col items-center w-[1000px] my-8">
                     <h3 className="text-xl text-white">{t('data_source')}</h3>
-                    <div className="flex justify-center items-center space-x-12">
-                        <img className="w-1/2 h-1/2" src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="image" />
+                    <div className="flex max-md:flex-col justify-center items-center md:space-x-12 max-lg:mx-8">
+                        <img className="w-1/2 h-1/2 max-md:my-8" src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png" alt="image" />
                         <p className="text-white">{t('OpenWeatherAPI_description')}</p>
                     </div>
                 </div>
             </div>
-            <div className="flex justify-center bg-black py-2">
+            {/* <div className="flex justify-center bg-black py-2">
                 <span className="text-white">Copy</span>
-            </div>
+            </div> */}
         </Scrollbars>
     );
 }
