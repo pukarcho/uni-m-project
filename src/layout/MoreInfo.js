@@ -14,7 +14,7 @@ function MoreInfo() {
     if(navigation.moreInfoView){
         return (
             <div className='absolute w-screen h-screen top-0 left-0 bg-gray-800'>
-                <div className="absolute top-6 right-6 text-white text-2xl cursor-pointer" onClick={closeMoreInfoView}>
+                <div className="absolute top-5 right-5 text-white text-2xl cursor-pointer" onClick={closeMoreInfoView}>
                     <AiOutlineClose />
                 </div>
                 <div className="pt-12 px-12 max-md:px-2">

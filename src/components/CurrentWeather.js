@@ -52,19 +52,19 @@ const CurrentWeather = () => {
                 </div>
                 <div className='flex h-3 space-x-1'>
                     <Popover content={getMinMaxTooltipText(0, name, t)}>
-                        <div className='w-12 h-full rounded-l bg-slate-100' style={airIndex.index > 0 ? { backgroundColor: airIndex.color } : null}></div>
+                        <div className='w-12 max-sm:w-10 h-full rounded-l bg-slate-100' style={airIndex.index > 0 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
                     <Popover content={getMinMaxTooltipText(1, name, t)}>
-                        <div className='w-12 h-full bg-slate-100' style={airIndex.index > 1 ? { backgroundColor: airIndex.color } : null}></div>
+                        <div className='w-12 max-sm:w-10 h-full bg-slate-100' style={airIndex.index > 1 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
                     <Popover content={getMinMaxTooltipText(2, name, t)}>
-                        <div className='w-12 h-full bg-slate-100' style={airIndex.index > 2 ? { backgroundColor: airIndex.color } : null}></div>
+                        <div className='w-12 max-sm:w-10 h-full bg-slate-100' style={airIndex.index > 2 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
                     <Popover content={getMinMaxTooltipText(3, name, t)}>
-                        <div className='w-12 h-full bg-slate-100' style={airIndex.index > 3 ? { backgroundColor: airIndex.color } : null}></div>
+                        <div className='w-12 max-sm:w-10 h-full bg-slate-100' style={airIndex.index > 3 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
                     <Popover content={getMinMaxTooltipText(4, name, t)}>
-                        <div className='w-12 h-full rounded-r bg-slate-100' style={airIndex.index > 4 ? { backgroundColor: airIndex.color } : null}></div>
+                        <div className='w-12 max-sm:w-10 h-full rounded-r bg-slate-100' style={airIndex.index > 4 ? { backgroundColor: airIndex.color } : null}></div>
                     </Popover>
                 </div>
             </div>
@@ -107,7 +107,7 @@ const CurrentWeather = () => {
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-:p-2">
                             <div className="flex items-center">
                                 <RiTempColdFill className="text-xl" />
                                 <span className="ml-2 text-xs">MIN</span>
@@ -116,7 +116,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <RiTempHotFill className="text-xl" />
                                 <span className="ml-2 text-xs">MAX</span>
@@ -127,7 +127,7 @@ const CurrentWeather = () => {
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <TbWindsock className="text-xl" />
                                 <span className="ml-2 text-xs">{t('wind').toUpperCase()}</span>
@@ -136,7 +136,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <TbWind className="text-xl" />
                                 <span className="ml-2 text-xs">{t('wind').toUpperCase()}</span>
@@ -147,7 +147,7 @@ const CurrentWeather = () => {
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <IoWater className="text-xl" />
                                 <span className="ml-2 text-xs">{t('humidity').toUpperCase()}</span>
@@ -156,7 +156,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <AiFillEye className="text-xl" />
                                 <span className="ml-2 text-xs">{t('visibility').toUpperCase()}</span>
@@ -167,7 +167,7 @@ const CurrentWeather = () => {
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <TbTemperature className="text-xl" />
                                 <span className="ml-2 text-xs">{t('feels-like').toUpperCase()}</span>
@@ -176,7 +176,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <AiOutlineDashboard className="text-xl" />
                                 <span className="ml-2 text-xs">{t('pressure').toUpperCase()}</span>
@@ -187,7 +187,7 @@ const CurrentWeather = () => {
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <WiSunrise className="text-xl" />
                                 <span className="ml-2 text-xs">{t('sunrise').toUpperCase()}</span>
@@ -196,7 +196,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <WiSunset className="text-xl" />
                                 <span className="ml-2 text-xs">{t('sunset').toUpperCase()}</span>
