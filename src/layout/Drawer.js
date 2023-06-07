@@ -9,6 +9,8 @@ import { selectCity, showDrawerView, selectCityCoord } from '../store/slices/nav
 import CurrentWeather from '../components/CurrentWeather';
 import { AiOutlineClose } from 'react-icons/ai';
 
+import Scrollbars from 'react-custom-scrollbars-2';
+
 function Drawer() {
   const dispatch = useDispatch();
   const navigation = useSelector((state) => state.navigation);
@@ -54,10 +56,12 @@ function Drawer() {
                     {/* <div className="px-4 sm:px-6">
                       <Dialog.Title className="text-lg font-medium text-gray-900">Panel title</Dialog.Title>
                     </div> */}
-                    <div className="relative mt-6 flex-1 px-8">
-
-                      <CurrentWeather />
-
+                    <div className="relative mt-6 flex-1">
+                      <Scrollbars style={{ width: '100%', height: 'calc(100vh - 6rem)' }}>
+                        <div className='px-8 max-sm:px-4'>
+                          <CurrentWeather />
+                        </div>
+                      </Scrollbars>
                     </div>
                   </div>
                 </Dialog.Panel>

@@ -8,7 +8,6 @@ import { TbWind, TbWindsock, TbTemperature } from 'react-icons/tb';
 import { WiSunrise, WiSunset } from 'react-icons/wi';
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
-import Scrollbars from "react-custom-scrollbars-2";
 
 import { getWindDirectionCardinal } from '../helpers/WindHelper';
 import { getAirIndexBySensor, getMinMaxTooltipText } from '../helpers/AirMetricsHelper';
@@ -80,7 +79,7 @@ const CurrentWeather = () => {
 
     if (weatherData) {
         return (
-            <Scrollbars style={{ width: '100%', height: 'calc(100vh - 6rem)' }}>
+            <>
                 <div className="flex mb-12">
                     <div className="w-4/6">
                         <h1 className="text-2xl font-bold">{t(`${weatherData.name}`)}</h1>
@@ -107,7 +106,7 @@ const CurrentWeather = () => {
                 </div>
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
-                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-:p-2">
+                        <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
                                 <RiTempColdFill className="text-xl" />
                                 <span className="ml-2 text-xs">MIN</span>
@@ -205,8 +204,7 @@ const CurrentWeather = () => {
                         </div>
                     </div>
                 </div>
-            </Scrollbars>
-            // </div>
+            </>
         );
     }
     else {
