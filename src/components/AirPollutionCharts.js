@@ -153,7 +153,7 @@ function AirPollutionCharts() {
 
     return (
         <div className="w-full text-white">
-            <div className="flex justify-between mx-4">
+            <div className="flex flex-wrap justify-between items-center mx-4">
                 <h3 className="mb-2 text-2xl">{t(navigation.selectedCity)}</h3>
                 <span>{weatherData && moment(weatherData.dt * 1000).format("HH:mm DD/MM/YYYY")}</span>
             </div>
@@ -284,7 +284,11 @@ function ChartWrapper({ head, chart, info }) {
             </div>
             <div className="h-[270px] max-md:h-[200px]">
                 {showInfoText ? (
-                    <div className="p-4">{info}</div>
+                    <div className="p-4 h-full">
+                        <Scrollbars style={{ width: '100%', height: '100%' }}>
+                            {info}
+                        </Scrollbars>
+                    </div>
                 ) : (
                     <>{chart}</>
                 )}
