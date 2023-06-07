@@ -198,11 +198,11 @@ function AirPollutionCharts() {
                             <h3>{t('forecast_for_5_days')}</h3>
                             <div className="h-[270px]">
                                 <Scrollbars style={{ width: '100%', height: '100%' }}>
-                                    <div className="flex justify-center items-center h-full w-full">
+                                    <div className="flex justify-center items-center h-full w-full max-md:w-fit">
                                         {forecastData.map((data, key) => (
-                                            <div key={key} className={`flex flex-col items-center h-48 w-24 border-r-[1px] ${key === 0 ? 'border-l-[1px]' : ''}`}>
+                                            <div key={key} className={`flex flex-col items-center h-44 w-20 border-r-[1px] ${key === 0 ? 'border-l-[1px]' : ''}`}>
                                                 <span className="mb-4">{data.date}</span>
-                                                {getWeatherIcon(getMostCommonElememt(data.weatherIcons), 'text-6xl')}
+                                                {getWeatherIcon(getMostCommonElememt(data.weatherIcons), 'text-5xl')}
                                                 <span className="text-xl mt-4">{Math.round(Math.max(...data.main.map(item => item.temp_max)))}<span>&deg;</span></span>
                                                 <div className="w-8 border-b-[1px]"></div>
                                                 <span className="text-xl">{Math.round(Math.min(...data.main.map(item => item.temp_min)))}<span>&deg;</span></span>
