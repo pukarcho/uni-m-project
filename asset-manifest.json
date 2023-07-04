@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/uni-m-project/static/css/main.ef5b51f3.css",
-    "main.js": "/uni-m-project/static/js/main.c63dcf1c.js",
+    "main.js": "/uni-m-project/static/js/main.61a17acf.js",
     "static/js/787.ec704a7a.chunk.js": "/uni-m-project/static/js/787.ec704a7a.chunk.js",
     "index.html": "/uni-m-project/index.html",
     "main.ef5b51f3.css.map": "/uni-m-project/static/css/main.ef5b51f3.css.map",
-    "main.c63dcf1c.js.map": "/uni-m-project/static/js/main.c63dcf1c.js.map",
+    "main.61a17acf.js.map": "/uni-m-project/static/js/main.61a17acf.js.map",
     "787.ec704a7a.chunk.js.map": "/uni-m-project/static/js/787.ec704a7a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ef5b51f3.css",
-    "static/js/main.c63dcf1c.js"
+    "static/js/main.61a17acf.js"
   ]
 }
