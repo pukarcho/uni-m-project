@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MapContainer, TileLayer, Marker, Popup, Polygon } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, Polygon, useMapEvent } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { renderToStaticMarkup } from "react-dom/server";
 import { divIcon } from "leaflet";
+import { isMobile } from 'react-device-detect';
 
 import { HiMapPin } from 'react-icons/hi2';
 
@@ -12,10 +13,19 @@ import { selectCity, showDrawerView, selectCityCoord } from '../store/slices/nav
 
 import MapHelperText from './MapHelperText';
 
+function LocationFix({ coord }) {
+    const map = useMapEvent('click', () => {
+      map.setView(coord, map.getZoom())
+    })
+    return null
+  }
+
 function Map({ mapView, onMarkerHover }) {
     const dispatch = useDispatch();
+    //const map = useMap();
     const airData = useSelector((state) => state.mapData.airData);
     const [coordinates, setCoordinates] = useState([]);
+    const [mobileDeviceLocation, setMobileDeviceLocation] = useState([]);
 
     const bulgaria = require('./map.json');
     const markers = require('./markers.json');
@@ -87,37 +97,36 @@ function Map({ mapView, onMarkerHover }) {
         setCoordinates(tempCordinates);
     }, []);
 
+    useEffect(() => {
+        if (isMobile && navigator.geolocation) {
+            navigator.permissions
+            .query({ name: "geolocation" })
+            .then(function (result) {
+                    navigator.geolocation.getCurrentPosition((pos) => {
+                        var crd = pos.coords;
+                        setMobileDeviceLocation([crd.latitude, crd.longitude]);
+                        setTimeout(() => {
+                            document.getElementsByClassName("leaflet-container")[0].click();
+                        }, 1000);
+                    }, (error) => {
+                        console.log(error);
+                    });
+            });
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }, []);
+
     const onMarkerClick = (city, coord) => {
         dispatch(selectCity(city));
         dispatch(selectCityCoord(coord));
         dispatch(showDrawerView(true));
     };
 
-    const getMapInitialCoord = () => {
-        if (navigator.geolocation) {
-            navigator.permissions
-            .query({ name: "geolocation" })
-            .then(function (result) {
-                if (result.state === "granted") {
-                    navigator.geolocation.getCurrentPosition((pos) => {
-                        var crd = pos.coords;
-                        alert("Your current position is:");
-                        alert(`Latitude : ${crd.latitude}`);
-                        alert(`Longitude: ${crd.longitude}`);
-                        alert(`More or less ${crd.accuracy} meters.`);
-                    });
-                }
-            });
-        } else {
-            console.log("Geolocation is not supported by this browser.");
-        }
-        
-        return [42.7229021, 25.6415769];
-    }
-
     return (
         <div>
-            <MapContainer center={getMapInitialCoord()} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
+            <MapContainer center={isMobile ? [42.6954108, 23.2539073] : [42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
+                {isMobile && <LocationFix coord={mobileDeviceLocation} />}
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
