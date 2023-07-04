@@ -104,7 +104,7 @@ const CurrentWeather = () => {
                 <div className="flex justify-center mb-4">
                     <div className="py-2 px-4 bg-slate-100 text-gray-700 rounded-lg cursor-pointer hover:bg-white" onClick={moreInfoClick}>{t('more_information')}</div>
                 </div>
-                <div className="flex space-x-6 mb-4">
+                {/* <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
                             <div className="flex items-center">
@@ -123,7 +123,7 @@ const CurrentWeather = () => {
                             <p className="text-xl font-bold ml-6">{Math.round(weatherData.main.temp_max)}<span>&deg;</span></p>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className="flex space-x-6 mb-4">
                     <div className="w-2/4">
                         <div className="w-full h-20 bg-gray-700 rounded-2xl p-4 max-sm:p-2">
