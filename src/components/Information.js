@@ -16,37 +16,43 @@ function Information() {
             id: 'SO2',
             name: <>SO<sub>2</sub></>,
             shortDescription: t('SO2_short_description'),
-            image: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2020/06/power_plant/22104698-2-eng-GB/Power_plant_pillars.jpg"
+            image: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2020/06/power_plant/22104698-2-eng-GB/Power_plant_pillars.jpg",
+            width: 600,
         },
         {
             id: 'NO2',
             name: <>NO<sub>2</sub></>,
             shortDescription: t('NO2_short_description'),
-            image: "https://thehill.com/wp-content/uploads/sites/2/2021/12/ca_vehicleemissions_istock.jpg?w=1280&h=720&crop=1"
+            image: "https://thehill.com/wp-content/uploads/sites/2/2021/12/ca_vehicleemissions_istock.jpg?w=1280&h=720&crop=1",
+            width: 600,
         },
         {
             id: 'PM10',
             name: <>PM<sub>10</sub></>,
             shortDescription: t('PM10_short_description'),
-            image: "https://cms.iqair.com/sites/default/files/blog/2021-01/PM10_Desk_b.jpg"
+            image: "https://cms.iqair.com/sites/default/files/blog/2021-01/PM10_Desk_b.jpg",
+            width: 600,
         },
         {
             id: 'PM2_5',
             name: <>PM<sub>2.5</sub></>,
             shortDescription: t('PM2_5_short_description'),
-            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/75114000/jpg/_75114601_beijingsmogafp.jpg"
+            image: "https://ichef.bbci.co.uk/news/624/mcs/media/images/75114000/jpg/_75114601_beijingsmogafp.jpg",
+            width: 600,
         },
         {
             id: 'O3',
             name: <>O<sub>3</sub></>,
             shortDescription: t('O3_short_description'),
-            image: "https://www.trusens.com/siteassets/guides/ultimate-guide-to-air-pollutants/ozone.jpg?width=1254&height=836"
+            image: "https://www.trusens.com/siteassets/guides/ultimate-guide-to-air-pollutants/ozone.jpg?width=1254&height=836",
+            width: 600,
         },
         {
             id: 'CO',
             name: 'CO',
             shortDescription: t('CO_short_description'),
-            image: "https://carfromjapan.com/wp-content/uploads/2019/10/car-air-pollution.jpg"
+            image: "https://carfromjapan.com/wp-content/uploads/2019/10/car-air-pollution.jpg",
+            width: 600,
         }
     ];
 
@@ -93,8 +99,8 @@ function Information() {
                                                     <h3 className="text-2xl mb-4 max-md:text-center">{tab.name} {t('pollution')}</h3>
                                                     <p className="indent-12">{tab.shortDescription}</p>
                                                 </div>
-                                                <div className="h-[400px] w-1/2 max-lg:hidden">
-                                                    <img className="h-full" src={tab.image} alt="image" />
+                                                <div className="relative h-[400px] w-1/2 overflow-hidden max-lg:hidden">
+                                                    <img className={`absolute m-auto h-full object-cover`} src={tab.image} alt="image" />
                                                 </div>
                                             </div>
                                         </div>

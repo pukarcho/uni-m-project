@@ -224,42 +224,42 @@ function AirPollutionCharts() {
                     <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>SO<sub>2</sub> {t('data_for_last_7_days')}</h3>}
-                            chart={<LineChartAirPollution data={SO2Data} sensorName='SO2' />}
+                            chart={<LineChartAirPollution data={SO2Data} sensorName='SO2' name={<>SO<sub>2</sub></>} />}
                             info={t('SO2_short_description')}
                         />
                     </div>
                     <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>NO<sub>2</sub> {t('data_for_last_7_days')}</h3>}
-                            chart={<LineChartAirPollution data={NO2Data} sensorName='NO2' />}
+                            chart={<LineChartAirPollution data={NO2Data} sensorName='NO2' name={<>NO<sub>2</sub></>} />}
                             info={t('NO2_short_description')}
                         />
                     </div>
                     <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>PM<sub>10</sub> {t('data_for_last_7_days')}</h3>}
-                            chart={<LineChartAirPollution data={PM10Data} sensorName='PM10' />}
+                            chart={<LineChartAirPollution data={PM10Data} sensorName='PM10' name={<>PM<sub>10</sub></>} />}
                             info={t('PM10_short_description')}
                         />
                     </div>
                     <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>PM<sub>2.5</sub> {t('data_for_last_7_days')}</h3>}
-                            chart={<LineChartAirPollution data={PM2_5Data} sensorName='PM2_5' />}
+                            chart={<LineChartAirPollution data={PM2_5Data} sensorName='PM2_5' name={<>PM<sub>2.5</sub></>} />}
                             info={t('PM2_5_short_description')}
                         />
                     </div>
                     <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>O<sub>3</sub> {t('data_for_last_7_days')}</h3>}
-                            chart={<LineChartAirPollution data={O3Data} sensorName='O3' />}
+                            chart={<LineChartAirPollution data={O3Data} sensorName='O3' name={<>O<sub>3</sub></>} />}
                             info={t('O3_short_description')}
                         />
                     </div>
                     <div className="w-1/3 max-xl:w-1/2 max-lg:w-full p-4">
                         <ChartWrapper
                             head={<h3>CO {t('data_for_last_7_days')}</h3>}
-                            chart={<LineChartAirPollution data={COData} sensorName='CO' />}
+                            chart={<LineChartAirPollution data={COData} sensorName='CO' name={<>CO</>} />}
                             info={t('CO_short_description')}
                         />
                     </div>

@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 import { sensors, colors as areaColors } from '../helpers/AirMetricsHelper';
 
-function LineChartAirPollution({ data, sensorName }) {
+function LineChartAirPollution({ data, sensorName, name }) {
 
     const dateFormatter = (value) => {
         return moment.unix(value).format('DD MMM');
@@ -13,12 +13,12 @@ function LineChartAirPollution({ data, sensorName }) {
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             return (
-                <div className="bg-white p-1 border-emerald-400">
+                <div className="bg-white p-1 border-emerald-400 rounded-md">
                     <div className='flex justify-start items-center text-black m-2'>
                         <MdOutlineDateRange className='mr-2' />
                         {moment.unix(payload[0].payload.date).format('DD MMM HH:mm')}
                     </div>
-                    <div className='text-black m-2'>{payload[0].payload.value}</div>
+                    <div className='text-black m-2'>{name} : {payload[0].payload.value} μg/m3</div>
                 </div>
             );
         }

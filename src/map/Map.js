@@ -93,9 +93,31 @@ function Map({ mapView, onMarkerHover }) {
         dispatch(showDrawerView(true));
     };
 
+    const getMapInitialCoord = () => {
+        if (navigator.geolocation) {
+            navigator.permissions
+            .query({ name: "geolocation" })
+            .then(function (result) {
+                if (result.state === "granted") {
+                    navigator.geolocation.getCurrentPosition((pos) => {
+                        var crd = pos.coords;
+                        alert("Your current position is:");
+                        alert(`Latitude : ${crd.latitude}`);
+                        alert(`Longitude: ${crd.longitude}`);
+                        alert(`More or less ${crd.accuracy} meters.`);
+                    });
+                }
+            });
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+        
+        return [42.7229021, 25.6415769];
+    }
+
     return (
         <div>
-            <MapContainer center={[42.7229021, 25.6415769]} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
+            <MapContainer center={getMapInitialCoord()} zoom={8} scrollWheelZoom={true} style={{ height: 'Calc(100vh - 64px)', width: '100wh', zIndex: 0 }}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -148,7 +170,7 @@ function Map({ mapView, onMarkerHover }) {
                     }
                 })}
             </MapContainer>
-            {/* <MapHelperText /> */}
+            <MapHelperText />
         </div>
     );
 }
