@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 
 import moment from 'moment';
+import 'moment/min/locales';
 import { useTranslation } from 'react-i18next';
 
 import Layout from './layout/Layout';
@@ -26,6 +27,10 @@ function App() {
       i18n.changeLanguage('bg');
       moment.locale('bg');
       localStorage.setItem('language', 'bg');
+    }
+    else {
+      i18n.changeLanguage(localStorage.getItem('language'));
+      moment.locale(localStorage.getItem('language'));
     }
 
     if(!working && fetchSuccess === 0){
